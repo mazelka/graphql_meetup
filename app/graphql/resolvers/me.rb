@@ -4,7 +4,10 @@ module Resolvers
   class Me < AuthBase
     type Types::UserAccountType, null: false
 
-    def resolve
+    argument :order_by, Types::Inputs::MovieOrderingInput, required: false
+
+    def resolve(order_by: nil)
+      order_by.to_h
       current_user
     end
   end
