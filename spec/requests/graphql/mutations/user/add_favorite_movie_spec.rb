@@ -28,6 +28,7 @@ describe 'mutation userAddFavoriteMovie', type: :request do
         query: user_add_favorite_movie_mutation,
         variables: variables
       )
+
       expect(response).to match_schema(AuthenticationErrorSchema)
       expect(response.status).to be(200)
     end

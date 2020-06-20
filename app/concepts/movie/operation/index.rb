@@ -4,8 +4,8 @@ module Movie::Operation
   class Index < Trailblazer::Operation
     step :set_result
 
-    def set_result(ctx, params:, **)
-      ctx['result'] = ::Movie.where('title LIKE ?', "%#{params}%")
+    def set_result(ctx, **)
+      ctx['result'] = ::Movie.all
     end
   end
 end

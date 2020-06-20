@@ -13,15 +13,5 @@ module Types
           resolver: Resolvers::Movie,
           connection: false,
           description: I18n.t('graphql.queries.movie')
-
-    field :list,
-          resolver: Resolvers::List,
-          connection: false,
-          description: I18n.t('graphql.queries.list')
-
-    field :trending_movies,
-          resolver: Resolvers::TrendingMovies,
-          connection: false,
-          description: I18n.t('graphql.queries.trending_movies')
   end
 end

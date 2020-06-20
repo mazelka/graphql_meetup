@@ -32,6 +32,6 @@ describe Movie::Operation::Index, type: :operation do
   end
 
   def execute_operation
-    described_class.call(params: '')
+    described_class.call
   end
 end

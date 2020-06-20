@@ -26,16 +26,6 @@ module Types
           null: true,
           description: I18n.t("#{I18N_PATH}.fields.poster")
 
-    field :is_favorite,
-          Boolean,
-          null: true,
-          description: I18n.t("#{I18N_PATH}.fields.is_favorite")
-
-    field :is_watchlist,
-          Boolean,
-          null: true,
-          description: I18n.t("#{I18N_PATH}.fields.is_watchlist")
-
     def images
       BatchLoader::GraphQL.for(object.id).batch(default_value: []) do |movie_ids, loader|
         ::MovieImage
@@ -56,20 +46,6 @@ module Types
           loader.call(attachment.record_id, attachment)
         end
       end
-    end
-
-    def is_favorite # rubocop:disable Naming/PredicateName
-      ::FavoriteMovie.where(
-        movie_id: object.id,
-        user_account_id: context[:current_user]
-      ).exists?
-    end
-
-    def is_watchlist # rubocop:disable Naming/PredicateName
-      ::WatchlistMovie.where(
-        movie_id: object.id,
-        user_account_id: context[:current_user]
-      ).exists?
     end
   end
 end
